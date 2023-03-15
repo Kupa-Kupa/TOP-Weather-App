@@ -1,0 +1,19 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.city,
+.state,
+.country {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.temperature {
+  font-size: 5rem;
+}

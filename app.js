@@ -27,12 +27,14 @@ const locationInput = document.querySelector('#searchLoc');
 const searchIcon = document.querySelector('#search');
 searchIcon.addEventListener('click', getSearchLocation);
 
-async function getSearchLocation(event) {
+async function getSearchLocation() {
   console.log(locationInput);
   console.log(locationInput.value);
   searchLocation = locationInput.value;
-  await getWeather();
-  addLocationList();
+  getWeather();
+  // await getWeather();
+  // addLocationList();
+  // render();
 }
 
 function addLocationList() {
@@ -57,20 +59,59 @@ function getWeatherForSelection() {
   lat = locationList[locationDropDown.value].lat;
   lon = locationList[locationDropDown.value].lon;
   getWeatherData();
+  render();
+}
+
+async function render() {
+  const city = document.querySelector('.city');
+  const state = document.querySelector('.state');
+  const country = document.querySelector('.country');
+  const temperature = document.querySelector('.temperature');
+
+  city.innerText = `${locationList[locationDropDown.value].name}, `;
+  state.innerText = `${locationList[locationDropDown.value].state}, `;
+  country.innerText = `${locationList[locationDropDown.value].country}`;
+  console.log(getWeatherData());
+  temperature.innerText = `${await getWeatherData()} ${currentUnit}`;
 }
 
 const key = 'fa09cc612d5a9e9923765ef4d3397922';
 
 let lat = '';
 let lon = '';
+
+const celsius = '°C';
+const fahrenheit = '°F';
 let units = 'metric';
+let currentUnit = celsius;
+
+const temperatureUnitsButton = document.querySelector('#temperature-units');
+temperatureUnitsButton.addEventListener('click', changeTempUnits);
+
+function changeTempUnits() {
+  if (units === 'metric') {
+    units = 'imperial';
+    currentUnit = fahrenheit;
+  } else {
+    units = 'metric';
+    currentUnit = celsius;
+  }
+
+  getWeather();
+}
+
 let locationList = '';
 
 /* split out geo and weather data */
 async function getWeather() {
   await getGeoData();
-  getWeatherData();
+  await getWeatherData();
+
+  addLocationList();
+  render();
 }
+
+getWeather();
 
 async function getGeoData() {
   // get lat and lon
@@ -107,6 +148,7 @@ async function getWeatherData() {
   console.log('log weather data:');
   console.log(weatherData);
   console.log(weatherData.main.temp, 'metric');
+  return weatherData.main.temp;
 }
 
 /*
