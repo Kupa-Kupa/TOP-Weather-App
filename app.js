@@ -116,7 +116,7 @@ getWeather();
 async function getGeoData() {
   // get lat and lon
   const geoResponse = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&limit=5&appid=${key}`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&limit=5&appid=${key}`,
     {
       mode: 'cors',
     }
@@ -137,7 +137,7 @@ async function getGeoData() {
 
 async function getWeatherData() {
   const weatherResponse = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${key}`,
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${key}`,
     {
       mode: 'cors',
     }
@@ -155,7 +155,7 @@ async function getWeatherData() {
 async function getWeatherData() {
   // get lat and lon
   const geoResponse = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&limit=5&appid=${key}`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&limit=5&appid=${key}`,
     {
       mode: 'cors',
     }
@@ -174,7 +174,7 @@ async function getWeatherData() {
   console.log(lon, 'lon');
 
   const weatherResponse = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${key}`,
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${key}`,
     {
       mode: 'cors',
     }
@@ -197,7 +197,7 @@ async function getWeatherData() {
 
 function getWeatherDataProm() {
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&limit=5&appid=${key}`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&limit=5&appid=${key}`,
     {
       mode: 'cors',
     }
@@ -214,7 +214,7 @@ function getWeatherDataProm() {
     })
     .then((resp) => {
       fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${resp[0]}&lon=${resp[1]}&units=${units}&appid=${key}`,
+        `https://api.openweathermap.org/data/2.5/weather?lat=${resp[0]}&lon=${resp[1]}&units=${units}&appid=${key}`,
         {
           mode: 'cors',
         }
@@ -233,7 +233,7 @@ function getWeatherDataProm() {
 
 /*
 const weatherData = fetch(
-  `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${key}`,
+  `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${key}`,
   {
     mode: 'cors',
   }
@@ -248,7 +248,7 @@ const weatherData = fetch(
 /*
 async function getLocationData() {
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&appid=${key}`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation}&appid=${key}`,
     {
       mode: 'cors',
     }
