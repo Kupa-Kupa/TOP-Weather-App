@@ -8,5 +8,23 @@
     <link rel="stylesheet" href="./styles.css" />
     <script src="./app.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="searchbox">
+      <label for="searchLoc">Get Weather at:</label>
+      <input
+        type="text"
+        name="searchLoc"
+        id="searchLoc"
+        placeholder="location"
+      />
+      <span id="search">🔍</span>
+    </div>
+    <div class="location-list">
+      <select name="locations" id="locations">
+        <option value="">---</option>
+      </select>
+    </div>
+    <div class="city"></div>
+    <div class="temperature"></div>
+  </body>
 </html>
